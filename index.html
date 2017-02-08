@@ -73,21 +73,21 @@ async function onButtonClick3()
 	})
 	.then(device => {
 		alert('Got device:' + device.name);
-		alert('id:' + device.id);
+//		alert('id:' + device.id);
 		return device.gatt.connect(); 
 	})
 	.then(server => {
-		alert('Getting Service…');
+		alert('Getting Service');
+		return server.getPrimaryService('b56a46b1-2b62-87aa-a241-3abdaa426dfb');
 //		return server.getPrimaryService('b56a46b1-2b62-87aa-a241-3abdaa426dfb');
-//		return server.getPrimaryService('b56a46b1-2b62-87aa-a241-3abdaa426dfb');
-		return server.getPrimaryService("fb6d42aa-bd3a-41a2-aa87-622bb1466ab5");
+//		return server.getPrimaryService("fb6d42aa-bd3a-41a2-aa87-622bb1466ab5");
 	})
 	.then(service => {
-		alert('Getting Characteristic…');
+		alert('Getting Characteristic');
 		return service.getCharacteristic('ae955bc6-3fa0-4b88-a7d7-74a7706a0d58');
 	})
 	.then(characteristic => {
-		alert('Reading amount…');
+		alert('Reading amount');
 		return characteristic.readValue();
 	})
 	.then(value => {
@@ -103,7 +103,7 @@ async function onButtonClick3()
 
 <body>
 
-Hello 20:</br> 
+Hello 21:</br> 
 <button onClick="onButtonClick1();">Test 1</button></br>
 <button onClick="onButtonClick2();">Test 2</button></br>
 <button onClick="onButtonClick3();">Test 3</button></br>
