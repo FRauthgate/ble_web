@@ -94,6 +94,7 @@ async function onButtonClick3()
 		var decoder = new TextDecoder('utf-8');
         var decodedString = decoder.decode(value);
 		alert('Amount:' + decodedString);
+		document.querySelector('#Amount').textContent = decodedString;
 	})
 	.catch(exception => {
 		alert(exception);
@@ -105,10 +106,17 @@ async function onButtonClick3()
 
 <body>
 
-Hello 22:</br> 
+Hello 23:</br> 
 <button onClick="onButtonClick1();">Test 1</button></br>
 <button onClick="onButtonClick2();">Test 2</button></br>
 <button onClick="onButtonClick3();">Test 3</button></br>
+
+<h3>Live Output</h3>
+<div id="output" class="output">
+  <div>Amount: <span id="Amount"></span></div>
+  <div>Currency: <span id="Currency"></span></div>
+  <div>Merchant: <span id="Merchant"></span></div>
+</div>
 
 </body>
 </html>
