@@ -2,6 +2,23 @@
 <head>
 <title>Coke vending machine nearby!</title>
 <script>
+
+async function onButtonClick2() {
+navigator.bluetooth.requestDevice({
+  filters: [{
+    services: ['b56a46b1-2b62-87aa-a241-3abdaa426dfb'],
+  }]
+}).then(device => device.gatt.connect())
+.then(server => server.getPrimaryService('b56a46b1-2b62-87aa-a241-3abdaa426dfb'))
+.then(service => {
+  chosenHeartRateService = service;
+  return Promise.all([
+    service.getCharacteristic('ae955bc6-3fa0-4b88-a7d7-74a7706a0d58')
+      .then(alert(characteristic.readValue())),
+  ]);
+});
+}
+
 async function onButtonClick() {
   let filters = [];
 
@@ -25,7 +42,9 @@ async function onButtonClick() {
 
 <body>
 
-Hello 4: <button onClick="onButtonClick();">Test 1</button>
+Hello 5:</br> 
+<button onClick="onButtonClick();">Test 1</button></br>
+<button onClick="onButtonClick2();">Test 2</button></br>
 
 </body>
 </html>
