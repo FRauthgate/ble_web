@@ -14,12 +14,12 @@ async function onButtonClick1() {
 
     let server = await device.gatt.connect();
 	if (server === null) alert("Failed to connect");
-else alert(server);
+//else alert(server);
 
 	let service = await server.getPrimaryService('b56a46b1-2b62-87aa-a241-3abdaa426dfb');
 	if (service === null) alert("Failed to find service");
 
-else alert(service);
+//else alert(service);
 
     characteristic = await service.getCharacteristic('ae955bc6-3fa0-4b88-a7d7-74a7706a0d58');
 	if (characteristic === null) alert("Failed to find characteristic");
@@ -38,20 +38,20 @@ else alert(service);
 
 
 async function onButtonClick2() {
-navigator.bluetooth.requestDevice({
-  filters: [{
-    services: ['b56a46b1-2b62-87aa-a241-3abdaa426dfb'],
-  }]
-}).then(device => device.gatt.connect())
-.then(server => {alert("1"); server.getPrimaryService('b56a46b1-2b62-87aa-a241-3abdaa426dfb');})
-.then(service => {
-alert("OK");
-  chosenHeartRateService = service;
-  return Promise.all([
-    service.getCharacteristic('ae955bc6-3fa0-4b88-a7d7-74a7706a0d58')
-      .then(alert(characteristic.readValue())),
-  ]);
-});
+	navigator.bluetooth.requestDevice({
+	  filters: [{
+		services: ['b56a46b1-2b62-87aa-a241-3abdaa426dfb'],
+	  }]
+	}).then(device => device.gatt.connect())
+	.then(server => {alert("1"); server.getPrimaryService('b56a46b1-2b62-87aa-a241-3abdaa426dfb');})
+	.then(service => {
+	alert("OK");
+	  chosenHeartRateService = service;
+	  return Promise.all([
+		service.getCharacteristic('ae955bc6-3fa0-4b88-a7d7-74a7706a0d58')
+		  .then(alert(characteristic.readValue())),
+	  ]);
+	});
 }
 
 </script>
@@ -60,7 +60,7 @@ alert("OK");
 
 <body>
 
-Hello 10:</br> 
+Hello 11:</br> 
 <button onClick="onButtonClick1();">Test 1</button></br>
 <button onClick="onButtonClick2();">Test 2</button></br>
 
