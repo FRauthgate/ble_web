@@ -72,29 +72,39 @@ async function onButtonClick3()
 		}]
 	})
 	.then(device => {
-		alert('Got device:' + device.name);
+//		alert('Got device:' + device.name);
 //		alert('id:' + device.id);
 		return device.gatt.connect(); 
 	})
 	.then(server => {
-		alert('Getting Service');
+//		alert('Getting Service');
 		return server.getPrimaryService('b56a46b1-2b62-87aa-a241-3abdaa426dfb');
-//		return server.getPrimaryService('b56a46b1-2b62-87aa-a241-3abdaa426dfb');
-//		return server.getPrimaryService("fb6d42aa-bd3a-41a2-aa87-622bb1466ab5");
 	})
 	.then(service => {
-		alert('Getting Characteristic');
+//		alert('Getting Characteristic');
 		return service.getCharacteristic('ae955bc6-3fa0-4b88-a7d7-74a7706a0d58');
 	})
 	.then(characteristic => {
-		alert('Reading amount');
+//		alert('Reading amount');
 		return characteristic.readValue();
 	})
 	.then(value => {
 		var decoder = new TextDecoder('utf-8');
         var decodedString = decoder.decode(value);
-		alert('Amount:' + decodedString);
+//		alert('Amount:' + decodedString);
 		document.querySelector('#Amount').textContent = decodedString;
+	})
+	.then(service => {
+//		alert('Getting Characteristic');
+		return service.getCharacteristic('f630dca5-5f98-49b6-8691-9727242dfecb');
+	})
+	.then(characteristic => {
+//		alert('Reading amount');
+		return characteristic.readValue();
+	})
+	.then(value => {
+		var decoder = new TextDecoder('utf-8');
+		document.querySelector('#Currency').textContent = decoder.decode(value);
 	})
 	.catch(exception => {
 		alert(exception);
@@ -106,7 +116,7 @@ async function onButtonClick3()
 
 <body>
 
-Hello 23:</br> 
+Hello 24:</br> 
 <button onClick="onButtonClick1();">Test 1</button></br>
 <button onClick="onButtonClick2();">Test 2</button></br>
 <button onClick="onButtonClick3();">Test 3</button></br>
