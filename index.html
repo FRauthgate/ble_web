@@ -63,15 +63,48 @@ async function onButtonClick2()
 	.then(characteristic => { alert(characteristic.readValue()); });
 }
 
+
+async function onButtonClick3() 
+{
+	navigator.bluetooth.requestDevice({
+		filters: [{
+			services: ['b56a46b1-2b62-87aa-a241-3abdaa426dfb']
+		}]
+	})
+	.then(device => {
+		alert('Got device:', device.name);
+		alert('id:', device.id);
+		return device.gatt.connect(); // Chromium 49 and below use `connectGATT()` but from Chromium 50 it will use gatt.connect();
+	})
+	.then(server => {
+		alert('Getting Service…');
+		return server.getPrimaryService('b56a46b1-2b62-87aa-a241-3abdaa426dfb');
+	})
+	.then(service => {
+		alert('Getting Battery Characteristic…');
+		return service.getCharacteristic('ae955bc6-3fa0-4b88-a7d7-74a7706a0d58');
+	})
+	.then(characteristic => {
+		alert('Reading battery level…');
+		return characteristic.readValue();
+	})
+	.then(value => {
+		alert('Value:', value);
+	})
+	.catch(exception => {
+		alert(exception);
+	});
+}
 </script>
 
 </head>
 
 <body>
 
-Hello 17:</br> 
+Hello 18:</br> 
 <button onClick="onButtonClick1();">Test 1</button></br>
 <button onClick="onButtonClick2();">Test 2</button></br>
+<button onClick="onButtonClick3();">Test 3</button></br>
 
 </body>
 </html>
