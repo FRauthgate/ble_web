@@ -45,6 +45,7 @@ navigator.bluetooth.requestDevice({
 }).then(device => device.gatt.connect())
 .then(server => server.getPrimaryService('b56a46b1-2b62-87aa-a241-3abdaa426dfb'))
 .then(service => {
+alert("OK");
   chosenHeartRateService = service;
   return Promise.all([
     service.getCharacteristic('ae955bc6-3fa0-4b88-a7d7-74a7706a0d58')
@@ -59,7 +60,7 @@ navigator.bluetooth.requestDevice({
 
 <body>
 
-Hello 9:</br> 
+Hello 10:</br> 
 <button onClick="onButtonClick1();">Test 1</button></br>
 <button onClick="onButtonClick2();">Test 2</button></br>
 
