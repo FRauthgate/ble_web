@@ -8,12 +8,13 @@ async function onButtonClick() {
   filters.push({services: ['device_information']});
 
   try {
-    alert('Requesting Bluetooth Device...');
+ //   alert('Requesting Bluetooth Device...');
     const device = await navigator.bluetooth.requestDevice({filters: filters});
 
-    alert('> Name:             ' + device.name);
-    alert('> Id:               ' + device.id);
-    alert('> Connected:        ' + device.gatt.connected);
+ //   alert('> Name:             ' + device.name);
+ //   alert('> Id:               ' + device.id);
+//    alert('> Connected:        ' + device.gatt.connected);
+    alert('> Connected:        ' + device.gatt.manufacturer);
   } catch(error)  {
     alert('Argh! ' + error);
   }
