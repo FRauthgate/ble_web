@@ -17,12 +17,12 @@ async function onButtonClick1() {
 		if (server === null) alert("Failed to connect");
 alert(server);
 
-		let service = await server.getPrimaryService('b56a46b1-2b62-87aa-a241-3abdaa426dfb');
-		if (service === null) alert("Failed to find service");
+//		let service = await server.getPrimaryService('b56a46b1-2b62-87aa-a241-3abdaa426dfb');
+//		if (service === null) alert("Failed to find service");
 
-alert(service);
+//alert(service);
 
-		characteristic = await service.getCharacteristic('ae955bc6-3fa0-4b88-a7d7-74a7706a0d58');
+		characteristic = await server.getCharacteristic('ae955bc6-3fa0-4b88-a7d7-74a7706a0d58');
 		if (characteristic === null) alert("Failed to find characteristic");
 
 		alert("Found characteristic");
@@ -69,7 +69,7 @@ async function onButtonClick2()
 
 <body>
 
-Hello 16:</br> 
+Hello 17:</br> 
 <button onClick="onButtonClick1();">Test 1</button></br>
 <button onClick="onButtonClick2();">Test 2</button></br>
 
