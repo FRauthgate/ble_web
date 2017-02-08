@@ -15,7 +15,7 @@ async function onButtonClick1() {
     server = device.gatt.connect();
 	if (server === null) alert("Failed to connect");
 
-	service = server.getPrimaryService('b56a46b1-2b62-87aa-a241-3abdaa426dfb');
+	service = await server.getPrimaryService('b56a46b1-2b62-87aa-a241-3abdaa426dfb');
 	if (service === null) alert("Failed to find service");
 
     characteristic = service.getCharacteristic('ae955bc6-3fa0-4b88-a7d7-74a7706a0d58');
