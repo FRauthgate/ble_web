@@ -17,7 +17,7 @@ async function onButtonClick1() {
 		if (server === null) alert("Failed to connect");
 alert(server);
 
-		service = await server.getPrimaryService('b56a46b1-2b62-87aa-a241-3abdaa426dfb');
+		let service = await server.getPrimaryService('b56a46b1-2b62-87aa-a241-3abdaa426dfb');
 		if (service === null) alert("Failed to find service");
 
 alert(service);
@@ -69,7 +69,7 @@ async function onButtonClick2()
 
 <body>
 
-Hello 15:</br> 
+Hello 16:</br> 
 <button onClick="onButtonClick1();">Test 1</button></br>
 <button onClick="onButtonClick2();">Test 2</button></br>
 
