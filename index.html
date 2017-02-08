@@ -9,7 +9,7 @@ async function onButtonClick1() {
   filters.push({services: ['b56a46b1-2b62-87aa-a241-3abdaa426dfb']});
 
   try {
- //   alert('Requesting Bluetooth Device...');
+/   alert('Requesting Bluetooth Device...');
     const device = await navigator.bluetooth.requestDevice({filters: filters});
 
 	try {
@@ -17,15 +17,15 @@ async function onButtonClick1() {
 		if (server === null) alert("Failed to connect");
 alert(server);
 
-//		let service = await server.getPrimaryService('b56a46b1-2b62-87aa-a241-3abdaa426dfb');
-//		if (service === null) alert("Failed to find service");
+		let service = await server.getPrimaryService('b56a46b1-2b62-87aa-a241-3abdaa426dfb');
+		if (service === null) alert("Failed to find service");
 
-//alert(service);
+alert(service);
 
 		characteristic = await server.getCharacteristic('ae955bc6-3fa0-4b88-a7d7-74a7706a0d58');
 		if (characteristic === null) alert("Failed to find characteristic");
 
-		alert("Found characteristic");
+alert("Found characteristic");
 
 		value = await characteristic.readValue();
 		alert(value);
