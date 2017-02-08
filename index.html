@@ -25,9 +25,13 @@ async function onButtonClick1() {
 		characteristic = await service.getCharacteristic('ae955bc6-3fa0-4b88-a7d7-74a7706a0d58');
 		if (characteristic === null) alert("Failed to find characteristic");
 
-		alert(await characteristic.readValue());
+		alert("Found characteristic");
+
+		value = await characteristic.readValue();
+		alert(value);
 
 	} catch(error)  {
+		alert("Err!");
 		device.gatt.disconnect();
 	}
 
@@ -36,9 +40,12 @@ async function onButtonClick1() {
 //    alert('> Connected:        ' + device.gatt.connected);
 //    alert('> Connected:        ' + device.gatt.manufacturer);
 
-  } catch(error)  {
-    alert('Argh! ' + error);
-  }
+	} catch(error) {
+		alert('Argh! ' + error);
+		if (device.gatt.connected) {
+			device.gatt.disconnect();
+		}
+	}
 }
 
 
@@ -62,7 +69,7 @@ async function onButtonClick2()
 
 <body>
 
-Hello 13:</br> 
+Hello 14:</br> 
 <button onClick="onButtonClick1();">Test 1</button></br>
 <button onClick="onButtonClick2();">Test 2</button></br>
 
