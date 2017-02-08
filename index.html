@@ -17,7 +17,7 @@ async function onButtonClick1() {
 		if (server === null) alert("Failed to connect");
 alert(server);
 
-		let service = await server.getPrimaryService('b56a46b1-2b62-87aa-a241-3abdaa426dfb');
+		service = await server.getPrimaryService('b56a46b1-2b62-87aa-a241-3abdaa426dfb');
 		if (service === null) alert("Failed to find service");
 
 alert(service);
