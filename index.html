@@ -28,23 +28,18 @@ alert(service);
 alert("Found characteristic");
 
 		value = await characteristic.readValue();
-		alert(value);
+alert(value);
 
 		document.querySelector('#Amount').textContent = new TextDecoder('utf-8').decode(value);
 
 
 	} catch(error)  {
-		alert("Err!");
+		alert(exception);
 		device.gatt.disconnect();
 	}
 
-//    alert('> Name:             ' + device.name);
- //   alert('> Id:               ' + device.id);
-//    alert('> Connected:        ' + device.gatt.connected);
-//    alert('> Connected:        ' + device.gatt.manufacturer);
-
 	} catch(error) {
-		alert('Argh! ' + error);
+		alert(exception);
 		if (device.gatt.connected) {
 			device.gatt.disconnect();
 		}
