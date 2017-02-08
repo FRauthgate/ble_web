@@ -91,7 +91,9 @@ async function onButtonClick3()
 		return characteristic.readValue();
 	})
 	.then(value => {
-		alert('Amount:' + value);
+		var decoder = new TextDecoder('utf-8');
+        var decodedString = decoder.decode(value);
+		alert('Amount:' + decodedString);
 	})
 	.catch(exception => {
 		alert(exception);
@@ -103,7 +105,7 @@ async function onButtonClick3()
 
 <body>
 
-Hello 21:</br> 
+Hello 22:</br> 
 <button onClick="onButtonClick1();">Test 1</button></br>
 <button onClick="onButtonClick2();">Test 2</button></br>
 <button onClick="onButtonClick3();">Test 3</button></br>
