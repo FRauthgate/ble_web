@@ -12,40 +12,32 @@ async function onButtonClick1() {
 //alert('Requesting Bluetooth Device...');
     const device = await navigator.bluetooth.requestDevice({filters: filters});
 
-	try {
-		let server = await device.gatt.connect();
-		if (server === null) alert("Failed to connect");
+	let server = await device.gatt.connect();
+	if (server === null) alert("Failed to connect");
 alert(server);
 
-		let service = await server.getPrimaryService('b56a46b1-2b62-87aa-a241-3abdaa426dfb');
-		if (service === null) alert("Failed to find service");
+	let service = await server.getPrimaryService('b56a46b1-2b62-87aa-a241-3abdaa426dfb');
+	if (service === null) alert("Failed to find service");
 
 alert(service);
 
-		let characteristic = await service.getCharacteristic('ae955bc6-3fa0-4b88-a7d7-74a7706a0d58');
-		if (characteristic === null) alert("Failed to find characteristic");
+	let characteristic = await service.getCharacteristic('ae955bc6-3fa0-4b88-a7d7-74a7706a0d58');
+	if (characteristic === null) alert("Failed to find characteristic");
 
 //alert("Found characteristic");
 
-		let value = await characteristic.readValue();
+	let value = await characteristic.readValue();
 //alert(value);
-		document.querySelector('#Amount').textContent = new TextDecoder('utf-8').decode(value);
+	document.querySelector('#Amount').textContent = new TextDecoder('utf-8').decode(value);
 
 
-		let characteristic = await service.getCharacteristic('f630dca5-5f98-49b6-8691-9727242dfecb');
-		let value = await characteristic.readValue();
-		document.querySelector('#Currency').textContent = new TextDecoder('utf-8').decode(value);
+	characteristic = await service.getCharacteristic('f630dca5-5f98-49b6-8691-9727242dfecb');
+	value = await characteristic.readValue();
+	document.querySelector('#Currency').textContent = new TextDecoder('utf-8').decode(value);
 
-		let characteristic = await service.getCharacteristic('c7cb692f-c26f-438d-8092-bb4aa13e1a90');
-		let value = await characteristic.readValue();
-		document.querySelector('#Merchant').textContent = new TextDecoder('utf-8').decode(value);
-
-
-
-	} catch(error)  {
-		alert(exception);
-		device.gatt.disconnect();
-	}
+	characteristic = await service.getCharacteristic('c7cb692f-c26f-438d-8092-bb4aa13e1a90');
+	value = await characteristic.readValue();
+	document.querySelector('#Merchant').textContent = new TextDecoder('utf-8').decode(value);
 
 	} catch(error) {
 		alert(exception);
@@ -123,7 +115,7 @@ async function onButtonClick3()
 
 <body>
 
-Hello 30:</br> 
+Hello 31:</br> 
 <button onClick="onButtonClick1();">Test 1</button></br>
 <button onClick="onButtonClick2();">Test 2</button></br>
 <button onClick="onButtonClick3();">Test 3</button></br>
