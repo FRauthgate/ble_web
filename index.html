@@ -43,7 +43,7 @@ navigator.bluetooth.requestDevice({
     services: ['b56a46b1-2b62-87aa-a241-3abdaa426dfb'],
   }]
 }).then(device => device.gatt.connect())
-.then(server => server.getPrimaryService('b56a46b1-2b62-87aa-a241-3abdaa426dfb'))
+.then(server => {alert("1"); server.getPrimaryService('b56a46b1-2b62-87aa-a241-3abdaa426dfb');})
 .then(service => {
 alert("OK");
   chosenHeartRateService = service;
