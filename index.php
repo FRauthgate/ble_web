@@ -1,5 +1,3 @@
-<?php //require "login/loginheader.php"; ?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
