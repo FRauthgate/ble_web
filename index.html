@@ -3,6 +3,37 @@
 <title>Coke vending machine nearby!</title>
 <script>
 
+async function onButtonClick1() {
+  let filters = [];
+
+  filters.push({services: ['b56a46b1-2b62-87aa-a241-3abdaa426dfb']});
+
+  try {
+ //   alert('Requesting Bluetooth Device...');
+    const device = await navigator.bluetooth.requestDevice({filters: filters});
+
+    server = device.gatt.connect();
+	if (server === null) alert("Failed to connect");
+
+	service = server.getPrimaryService('b56a46b1-2b62-87aa-a241-3abdaa426dfb');
+	if (service === null) alert("Failed to find service");
+
+    characteristic = service.getCharacteristic('ae955bc6-3fa0-4b88-a7d7-74a7706a0d58');
+	if (characteristic === null) alert("Failed to find characteristic");
+
+    alert(characteristic.readValue());
+
+//    alert('> Name:             ' + device.name);
+ //   alert('> Id:               ' + device.id);
+//    alert('> Connected:        ' + device.gatt.connected);
+//    alert('> Connected:        ' + device.gatt.manufacturer);
+
+  } catch(error)  {
+    alert('Argh! ' + error);
+  }
+}
+
+
 async function onButtonClick2() {
 navigator.bluetooth.requestDevice({
   filters: [{
@@ -19,31 +50,14 @@ navigator.bluetooth.requestDevice({
 });
 }
 
-async function onButtonClick() {
-  let filters = [];
-
-  filters.push({services: ['b56a46b1-2b62-87aa-a241-3abdaa426dfb']});
-
-  try {
- //   alert('Requesting Bluetooth Device...');
-    const device = await navigator.bluetooth.requestDevice({filters: filters});
-
-    alert('> Name:             ' + device.name);
- //   alert('> Id:               ' + device.id);
-    alert('> Connected:        ' + device.gatt.connected);
-    alert('> Connected:        ' + device.gatt.manufacturer);
-  } catch(error)  {
-    alert('Argh! ' + error);
-  }
-}
 </script>
 
 </head>
 
 <body>
 
-Hello 5:</br> 
-<button onClick="onButtonClick();">Test 1</button></br>
+Hello 6:</br> 
+<button onClick="onButtonClick1();">Test 1</button></br>
 <button onClick="onButtonClick2();">Test 2</button></br>
 
 </body>
