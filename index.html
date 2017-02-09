@@ -4,6 +4,10 @@
 <script>
 
 async function onButtonClick1() {
+
+alert(navigator.bluetooth.referringDevice);
+alert(navigator.bluetooth.referringDevice.name);
+
   let filters = [];
 
   filters.push({services: ['b56a46b1-2b62-87aa-a241-3abdaa426dfb']});
@@ -110,7 +114,7 @@ async function onButtonClick3()
 
 <body>
 
-Hello 34:</br> 
+Hello 35:</br> 
 <button onClick="onButtonClick1();">Test 1</button></br>
 <button onClick="onButtonClick2();">Test 2</button></br>
 <button onClick="onButtonClick3();">Test 3</button></br>
