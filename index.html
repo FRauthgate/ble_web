@@ -94,6 +94,8 @@ async function onButtonClick3()
 		return service.getCharacteristic('f630dca5-5f98-49b6-8691-9727242dfecb');
 	})
 	.then(characteristic => {
+		characteristic.addEventListener('characteristicvaluechanged', alert('Charx changed'));
+		characteristic.startNotifications();
 //		alert('Reading amount');
 		return characteristic.readValue();
 	})
