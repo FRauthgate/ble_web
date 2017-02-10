@@ -4,6 +4,15 @@
 
 <link rel="icon" type="image/png" href="coke.png"/>
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Bootstrap -->
+<link href="css/bootstrap.css" rel="stylesheet" media="screen">
+<link href="css/main.css" rel="stylesheet" media="screen">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
 <script>
 
 async function onButtonClick1() 
@@ -124,7 +133,28 @@ async function onButtonClick4()
 </head>
 
 <body>
-<h1>Supplied and serviced by Ventsmart</h1>
+    <div class="container">
+      <span class="brand-text">
+        <span class="text-theme">AUTH</span>Gate
+      </span>
+
+      <div class="content" data-toggle="buttons">
+        <img src="coke.png" class="img-rounded" alt="Cinque Terre" width="60" height="100">
+        <div class="form-group">
+          <label for="amountValue">Amount:</label>
+          <input type="text" class="form-control" id="amountValue">
+        </div>
+      </div>
+
+      <div class="button-item">
+        <button type="button" class="btn btn-primary" onclick="buyItem()">Pay</a>
+      </div>
+      <h6>powered by <span class="brand-text2">
+        <span class="text-theme">AUTH</span>Gate</span>
+      </h6>
+    </div> <!-- /container -->
+
+<!--<h1>Supplied and serviced by Ventsmart</h1>
 
 
 Hello 40:</br> 
@@ -139,6 +169,6 @@ Hello 40:</br>
   <div>Currency: <span id="Currency"></span></div>
   <div>Merchant: <span id="Merchant"></span></div>
 </div>
-
+-->
 </body>
 </html>
