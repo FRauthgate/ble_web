@@ -41,7 +41,6 @@ async function buyItem()
 	let value = await characteristic.readValue();
 	document.querySelector('#Amount').textContent = new TextDecoder('utf-8').decode(value);
 
-
 	characteristic = await service.getCharacteristic('f630dca5-5f98-49b6-8691-9727242dfecb');
 	value = await characteristic.readValue();
 	document.querySelector('#Currency').textContent = new TextDecoder('utf-8').decode(value);
@@ -165,13 +164,13 @@ Hello 40:</br>
 <button onClick="onButtonClick2();">Test 2</button></br>
 <button onClick="onButtonClick3();">Test 3</button></br>
 <button onClick="onButtonClick4();">Test 4</button></br>
-
-<h3>Live Output</h3>
+-->
+<h3>Transaction</h3>
 <div id="output" class="output">
   <div>Amount: <span id="Amount"></span></div>
   <div>Currency: <span id="Currency"></span></div>
   <div>Merchant: <span id="Merchant"></span></div>
 </div>
--->
+
 </body>
 </html>
